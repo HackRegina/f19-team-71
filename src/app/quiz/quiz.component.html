@@ -1,10 +1,18 @@
 
 <h2><span class="text-secondary">{{quizType | titlecase}} Knowledge Test for: </span>{{education.title}}</h2>
 
-<ng-container *ngIf="questions.length && !result; else noQuestions">
-  <div class="progress mb-4" style="height: 20px;">
+<ng-container *ngIf="questions.length; else noQuestions">
+  <div class="progress mb-4" style="height: 20px;" *ngIf="!result;else results">
       <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" [attr.aria-valuenow]="progress +'%'" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
+
+  <ng-template #results>
+      <div class="alert" [class.alert-success]="corrected==questions.length"  [class.alert-warning]="corrected!=questions.length" role="alert">
+        <h3>
+        You've corrected {{corrected}} of {{questions.length}}.
+      </h3>  
+      </div>
+  </ng-template>    
 
   <h3>{{currentIndex+1}} of {{questions.length}}</h3>
   <form [formGroup]="questionForm">
@@ -41,17 +49,13 @@
       </div>
 
       <div class="col-sm-3 col-12  mb-2">
-          <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="!allAnswered" (click)="onSubmitQuiz()">Submit</button>
+          <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="progress<99 || result" (click)="onSubmitQuiz()">Submit</button>
       </div>
     </div>
 </form>
 </ng-container>
 
-<ng-container *ngIf="result">
-    <h3 class="text-success">Displays result here.</h3>
-</ng-container>
-
-<ng-template #noQuestions  *ngIf="!result">
-    <h3 class="text-warning">No questions available yet! Please check later.</h3>
+<ng-template #noQuestions>
+    <h3 class="text-warning">No test available yet! Please check later.</h3>
 </ng-template>
 

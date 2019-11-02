@@ -21,8 +21,8 @@ export class QuizComponent implements OnInit {
   questions: Question[] = [];
   question: Question;
   currentIndex: number = 0;
-  progress: number = 10;
-  allAnswered: boolean = false;
+  progress: number = 0;
+  corrected: number = 0;
   result: boolean = false;
   questionForm: FormGroup;  
   private formControls: any = {};
@@ -57,9 +57,34 @@ export class QuizComponent implements OnInit {
   buildQuestionForm(){
 
     this.formControls = this.quizService.getFormControls(this.questions);
-    console.log(this.formControls);
-    this.questionForm = this.fb.group(this.formControls); // new FormGroup(this.formControls);    
+    this.questionForm = this.fb.group(this.formControls); // new FormGroup(this.formControls);
+    this.trackFormChanges();    
     
+  }
+
+  trackFormChanges(): void{
+    this.questionForm.valueChanges.subscribe((formValues) => {
+      this.updateUserAnswers(formValues);
+      this.updateProgress();
+      
+    });  
+  }
+
+  updateUserAnswers(formValues: any[]){
+    this.questions.map((question) => {
+      if(formValues[question.key]){
+        question.userAnswers = [+formValues[question.key]];
+      }
+    });
+  }
+
+  updateProgress(): void{
+    let answered = 0;
+    this.questions.map((question) => {
+      const { userAnswers } = question;
+      if(userAnswers) answered++;
+    });
+    this.progress = (answered/this.questions.length)*100;
   }
 
   onShowNextQuestion(question): void{
@@ -71,6 +96,13 @@ export class QuizComponent implements OnInit {
   }
   
   onSubmitQuiz(): void{
+    this.questions.map((question) => {
+      const { correctAnswers, userAnswers } = question;
+      if(correctAnswers.join()==userAnswers.join()) this.corrected++;
+      else{
+
+      }
+    });
     this.result = true;
   }
 
