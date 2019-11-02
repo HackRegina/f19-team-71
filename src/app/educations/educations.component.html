@@ -2,8 +2,9 @@
 
 <div class="listing card" *ngFor="let education of educations$ | async">
     <div class="card-body">
-      <h5 class="card-title"><a routerLink="/education/{{education.id}}">{{education.title}}</a></h5>
+      <h5 class="card-title"><a [routerLink]="['/education-detail', education.id]">{{education.title}}</a></h5>
       <p class="card-text" *ngIf="education.excerpt">{{education.excerpt}}</p>
-      <a routerLink="/education/{{education.id}}" class="btn btn-primary">See More...</a>
+      <a [routerLink]="['/education-detail', education.id]" class="btn btn-secondary">See More...</a> &nbsp;
+      <a [routerLink]="['/quiz', education.id, 'pre']" class="btn btn-primary">Pre Knowledge Test</a>
     </div>
 </div>

@@ -15,4 +15,9 @@ export class EducationService {
   getEducationList(): Observable<any>{
     return of(this.educations);
   }
+
+  getEducationDetails(eId: number): Observable<any>{
+    return of(this.educations.filter(education => education.id==eId));
+  }
+
 }
