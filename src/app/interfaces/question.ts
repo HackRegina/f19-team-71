@@ -6,6 +6,7 @@ export interface QuestionOption{
 export interface Question{
   id: number;
   eId: number;
+  key?: string;
   title: string;
   options: QuestionOption[];
   correctAnswers: number[];

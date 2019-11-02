@@ -18,7 +18,7 @@ export const QUESTIONS_MOCKS: any[] = [
         text: 'Answer 3'
       },
     ],
-    correctAnswers: [2, 3]
+    correctAnswers: [3]
   },
   {
     id: 2,
@@ -110,7 +110,7 @@ export const QUESTIONS_MOCKS: any[] = [
         text: 'Answer 4'
       },
     ],
-    correctAnswers: [2, 4]
+    correctAnswers: [2]
   },
   {
     id: 1,
@@ -154,7 +154,7 @@ export const QUESTIONS_MOCKS: any[] = [
         text: 'Answer 4'
       },
     ],
-    correctAnswers: [1,2]
+    correctAnswers: [1]
   },
   {
     id: 3,
@@ -198,7 +198,7 @@ export const QUESTIONS_MOCKS: any[] = [
         text: 'Answer 3'
       },
     ],
-    correctAnswers: [2, 3]
+    correctAnswers: [2]
   },
   {
     id: 2,

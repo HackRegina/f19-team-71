@@ -1,50 +1,57 @@
 
 <h2><span class="text-secondary">{{quizType | titlecase}} Knowledge Test for: </span>{{education.title}}</h2>
 
-<ng-container *ngIf="questions.length; else noQuestions">
+<ng-container *ngIf="questions.length && !result; else noQuestions">
   <div class="progress mb-4" style="height: 20px;">
       <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" [attr.aria-valuenow]="progress +'%'" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 
   <h3>{{currentIndex+1}} of {{questions.length}}</h3>
-  <div class="card mb-4" *ngIf="question">
-      <div class="card-body">
-        <h5 class="card-title">{{question.id}}. {{question.title}}</h5>
-        <!-- <p class="card-text">{{currentIndex+1}} of {{questions.length}}</p> -->
-        <ng-container *ngIf="question.correctAnswers.length==1;else checkBoxes">
-            <div class="form-check" *ngFor="let option of question.options; let i = index">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
+  <form [formGroup]="questionForm">
+    <div class="card mb-4" *ngIf="question">
+        <div class="card-body">
+          <h5 class="card-title">{{question.id}}. {{question.title}}</h5>
+          <!-- <p class="card-text">{{currentIndex+1}} of {{questions.length}}</p> -->
+          <ng-container *ngIf="question.correctAnswers.length==1;else checkBoxes">
+              <div class="form-check mb-2" *ngFor="let option of question.options; let i = index">
+                  <input class="form-check-input" type="radio" [formControlName]="question.key" value="{{option.id}}">
+                  <label class="form-check-label" for="{{question.key}}">
+                      {{option.text}}
+                  </label>
+              </div>        
+          </ng-container>
+          <ng-template #checkBoxes>
+              <div class="form-group form-check  mb-2" *ngFor="let option of question.options; let i = index">
+                  <input class="form-check-input" [formControlName]="question.key" type="checkbox" value="{{option.id}}">
+                  <label class="form-check-label" for="{{question.key}}">
                     {{option.text}}
-                </label>
-            </div>        
-        </ng-container>
-        <ng-template #checkBoxes>
-            <div class="form-group form-check" *ngFor="let option of question.options; let i = index">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
-                <label class="form-check-label" for="defaultCheck1">
-                  {{option.text}}
-                </label>
-            </div>    
-        </ng-template>
+                  </label>
+              </div>    
+          </ng-template>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 col-6 mb-2">
+          <button type="button" class="btn btn-secondary btn-lg  btn-block" [disabled]="question.id==questions[0].id"  (click)="onShowPreviousQuestion(question)">&laquo;Prev</button>
       </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-3 col-6 mb-2">
-        <button type="button" class="btn btn-secondary btn-lg  btn-block" [disabled]="question.id==questions[0].id"  (click)="showPreviousQuestion(question)">&laquo;Prev</button>
-    </div>
+      <div class="col-sm-3 col-6  mb-2">
+          <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="question.id==questions[questions.length-1].id" (click)="onShowNextQuestion(question)">Next &raquo;</button>
+      </div>
 
-    <div class="col-sm-3 col-6  mb-2">
-        <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="question.id==questions[questions.length-1].id" (click)="showNextQuestion(question)">Next &raquo;</button>
+      <div class="col-sm-3 col-12  mb-2">
+          <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="!allAnswered" (click)="onSubmitQuiz()">Submit</button>
+      </div>
     </div>
-
-    <div class="col-sm-3 col-12  mb-2">
-        <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="!allAnswered">Submit</button>
-    </div>
-  </div>
+</form>
 </ng-container>
 
-<ng-template #noQuestions>
+<ng-container *ngIf="result">
+    <h3 class="text-success">Displays result here.</h3>
+</ng-container>
+
+<ng-template #noQuestions  *ngIf="!result">
     <h3 class="text-warning">No questions available yet! Please check later.</h3>
 </ng-template>
+
