@@ -2,7 +2,7 @@
 <h2><span class="text-secondary">{{quizType | titlecase}} Knowledge Test for: </span>{{education.title}}</h2>
 
 <div class="progress mb-4" style="height: 20px;">
-    <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="5%" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" [attr.aria-valuenow]="progress +'%'" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
 <div class="card mb-4" *ngIf="question">

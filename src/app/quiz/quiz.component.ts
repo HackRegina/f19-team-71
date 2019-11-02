@@ -19,7 +19,7 @@ export class QuizComponent implements OnInit {
   education: Education;
   questions: Question[] = [];
   question: Question;
-  progress: number = 0;
+  progress: number = 10;
   allAnswered: boolean = false;
 
   constructor(
