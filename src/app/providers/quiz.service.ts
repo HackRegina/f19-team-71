@@ -13,6 +13,7 @@ export class QuizService {
   constructor() { }
 
   getQuestions(eId: number): Observable<Question[]>{
+    return of(this.questions);
     return of(this.questions.filter(question => question.eId==eId));
   }
 

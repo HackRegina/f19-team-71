@@ -29,15 +29,15 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3 col-6 mb-2">
       <button type="button" class="btn btn-secondary btn-lg  btn-block" [disabled]="question.id==questions[0].id">&laquo;Prev</button>
   </div>
 
-  <div class="col-sm-3 float-right">
-      <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="question.id==questions[questions.length-1].id">Next</button>
+  <div class="col-sm-3 col-6  mb-2">
+      <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="question.id==questions[questions.length-1].id">Next &raquo;</button>
   </div>
 
-  <div class="col-sm-3 float-right">
+  <div class="col-sm-3 col-12  mb-2">
       <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="!allAnswered">Submit</button>
   </div>
 </div>
