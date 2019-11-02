@@ -10,6 +10,7 @@ import { EducationService } from '../educations/education.service';
 })
 export class QuizComponent implements OnInit {
   eId: number;
+  quizType: string;
   education: Education;
   constructor(
     private route: ActivatedRoute,
@@ -18,6 +19,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     this.eId = this.route.snapshot.paramMap.get('eId') as unknown as number;
+    this.quizType = this.route.snapshot.paramMap.get('type');
     this.getEducationDetails(this.eId);        
   }
 
