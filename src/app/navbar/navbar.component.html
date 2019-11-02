@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-  <button #navbarToggler  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" [ngClass]="{ 'show': isShown }"  id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/home">Home </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/educations">Educations <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" rel="noopener" target="_blank" href="https://www.aidsprogramssouthsask.com/">Go to aidsprogramssouthsask.com</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <button #navbarToggler  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': isShown }"  id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item "  [class.active]="navTitle!='educations'">
+          <a class="nav-link" routerLink="/home" >Home </a>
+        </li>
+        <li class="nav-item" [class.active]="navTitle=='educations'">
+          <a class="nav-link" routerLink="/educations">Educations <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rel="noopener" target="_blank" href="https://www.aidsprogramssouthsask.com/">Go to aidsprogramssouthsask.com</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

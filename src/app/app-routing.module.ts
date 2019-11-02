@@ -19,35 +19,35 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     data : {
-      breadCrumb: 'home'
+      title: 'home'
     }
   },
   {
     path: 'educations',
     component: EducationsComponent,
     data : {
-      breadCrumb: 'educations'
+      title: 'educations'
     }
   },
   {
     path: 'education/:eId',
     component: EducationComponent,
     data : {
-      breadCrumb: 'education'
+      title: 'education'
     }
   },
   {
     path: 'education-detail/:eId',
     component: EducationDetailComponent,
     data : {
-      breadCrumb: 'education'
+      title: 'education'
     }
   },
   {
     path: 'quiz/:eId/:type',
     component: QuizComponent,
     data : {
-      breadCrumb: 'quiz'
+      title: 'quiz'
     }
   },
   {
