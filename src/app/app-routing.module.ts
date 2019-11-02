@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { QuizResultComponent } from './quiz-result/quiz-result.component';
 import { QuizComponent } from './quiz/quiz.component';
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: 'quiz-result/:eId/:type',
     component: QuizResultComponent
   },
+  {
+    path: 'admin/questions',
+    component: QuizComponent,
+    canActivate: [AuthGuard]
+  }
 
 ];
 
