@@ -3,6 +3,7 @@
 <h2>{{education.title}}</h2>
 <div class="formatted">{{education.details}}</div>
 
+<p>&nbsp;</p>
 <p>
     <a (click)="goBack()" class="text-primary">&laquo;Back to Resources</a> &nbsp;
     <a [routerLink]="['/quiz', education.id, 'post']" class="btn btn-primary">Test Your Knowledge Now</a>  
