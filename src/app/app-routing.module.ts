@@ -17,23 +17,38 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    data : {
+      breadCrumb: 'home'
+    }
   },
   {
     path: 'educations',
-    component: EducationsComponent
+    component: EducationsComponent,
+    data : {
+      breadCrumb: 'educations'
+    }
   },
   {
     path: 'education/:eId',
-    component: EducationComponent
+    component: EducationComponent,
+    data : {
+      breadCrumb: 'education'
+    }
   },
   {
     path: 'education-detail/:eId',
-    component: EducationDetailComponent
+    component: EducationDetailComponent,
+    data : {
+      breadCrumb: 'education'
+    }
   },
   {
     path: 'quiz/:eId/:type',
-    component: QuizComponent
+    component: QuizComponent,
+    data : {
+      breadCrumb: 'quiz'
+    }
   },
   {
     path: 'quiz-result/:eId/:type',
