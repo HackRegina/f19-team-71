@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Location } from '@angular/common';
 
-import { EducationService } from './../educations/education.service';
+import { EducationService } from '../providers/education.service';
 import { Education } from '../interfaces/education';
 @Component({
   selector: 'app-education-detail',

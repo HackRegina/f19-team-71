@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { EducationService } from './education.service';
+import { EducationService } from '../providers/education.service';
 import { Education } from '../interfaces/education';
 import { Observable } from 'rxjs';
 
