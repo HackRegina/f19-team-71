@@ -29,9 +29,8 @@ export class EducationDetailComponent implements OnInit {
 
   private getEducationDetails(eId: number): void{
     this.educationService.getEducationDetails(eId)
-    .pipe(first())
     .subscribe((education) => {
-      this.education = education[0];
+      this.education = education;
     })
   }
 

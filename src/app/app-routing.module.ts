@@ -31,7 +31,7 @@ const routes: Routes = [
     component: EducationDetailComponent
   },
   {
-    path: 'quiz/:eid/:type',
+    path: 'quiz/:eId/:type',
     component: QuizComponent
   },
   {
