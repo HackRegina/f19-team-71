@@ -1,12 +1,9 @@
 <h2>Resources: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<div class="listing card" *ngFor="let education of educations$ | async">
+    <div class="card-body">
+      <h5 class="card-title"><a routerLink="/education/{{education.id}}">{{education.title}}</a></h5>
+      <p class="card-text" *ngIf="education.excerpt">{{education.excerpt}}</p>
+      <a routerLink="/education/{{education.id}}" class="btn btn-primary">See More...</a>
+    </div>
+</div>
