@@ -19,6 +19,7 @@ export class QuizComponent implements OnInit {
   education: Education;
   questions: Question[] = [];
   question: Question;
+  currentIndex: number = 0;
   progress: number = 10;
   allAnswered: boolean = false;
 
@@ -42,13 +43,22 @@ export class QuizComponent implements OnInit {
       this.education = data[0];
       this.questions = data[1];
       if(this.questions.length){
-        this.showQuestion(4);
+        this.getQuestion(this.currentIndex);
       }
     });
   }
 
-  showQuestion(qId: number): void{
-    this.question = this.questions[qId];
+  showNextQuestion(question): void{
+    this.getQuestion(this.currentIndex+1);
+  }  
+
+  showPreviousQuestion(question): void{
+    this.getQuestion(this.currentIndex-1);
+  }  
+
+  private getQuestion(idx: number): void{
+    this.question = this.questions[idx];
+    this.currentIndex = idx;
   }
   
 
