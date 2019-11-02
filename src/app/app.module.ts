@@ -8,6 +8,9 @@ import { EducationComponent } from './education/education.component';
 import { EducationDetailComponent } from './education-detail/education-detail.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizResultComponent } from './quiz-result/quiz-result.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { QuizResultComponent } from './quiz-result/quiz-result.component';
     EducationComponent,
     EducationDetailComponent,
     QuizComponent,
-    QuizResultComponent
+    QuizResultComponent,
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

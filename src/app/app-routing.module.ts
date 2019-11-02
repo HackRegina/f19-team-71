@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { QuizResultComponent } from './quiz-result/quiz-result.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { EducationsComponent } from './educations/educations.component';
@@ -10,7 +11,12 @@ import { EducationDetailComponent } from './education-detail/education-detail.co
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'educations'
+    redirectTo: 'home',
+    pathMatch: 'full'    
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'educations',
